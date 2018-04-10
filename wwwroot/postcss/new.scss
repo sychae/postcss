@@ -1,0 +1,19 @@
+
+    .image {
+        background-image: resolve('../images/bg.png');
+        border-radius:2px;
+        transform : scale(0.2);
+
+        .boda {
+            transform : scale(0.2);
+        }
+    }
+
+    @media (min-resolution: 2dppx) {
+        .image {
+            background-image: resolve('../images/bg.png');
+        }
+    }
+
+
+
