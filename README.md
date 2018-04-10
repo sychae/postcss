@@ -18,7 +18,7 @@ cd postcss
 # 설정 / 프로젝트 시작.
 
 ```
-rd -r .git
+rd -r -force .git
 git init
 
 yarn install
