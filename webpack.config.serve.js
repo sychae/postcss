@@ -15,6 +15,8 @@ module.exports = {
         minimize: false,
     },
     devServer: {
+        host: cfg.host,
+        port: cfg.port,
         contentBase: './' + cfg.wwwroot
     },
 };
