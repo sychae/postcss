@@ -1,34 +1,48 @@
-%box {
-    padding: 0.5em;
-  
-  }
+$mobile : 1;
+$desktop : 2;
 
-#root {
-    @extend %box;
-    width: width('../images/bg.png');
-    height: height('../images/bg.png');
-    background-image: resolve('../images/bg.png');
-    padding : 20px;
-    box-sizing: border-box;
+@mixin main($size){
+
+	.btn_play{
+		background: #fff;
+		button{
+			width: 100%;
+			height: 100%;
+			background-size:100% 100%;
+			border: 1px solid #ff0;
+
+			@media (any-hover: hover) {
+				&:hover:not([disabled]){
+					background: #f00;
+				}
+			}
+
+			&.on {
+				background: #0ff;
+				&:hover:not([disabled]){
+					background: #00f;
+				}
+			}
+		}
+	}
 }
-.root {
-    @extend #root;
-    background-image: resolve('../images/bg.png');
-    div, p{
-        margin: 10px;
-        padding:0px;
 
-    }
-    .sub {
-        margin : 10px;
-    }
+
+@mixin for-size($range) {
+	$break: 600px;
+
+	@if $range == $mobile {
+		@media (max-width: #{$break - 1}) { @content; }
+	} @else {
+		@media (min-width: $break) { @content; }
+	}
 }
 
-@mixin headline ($color, $size) {
-    color: $color;
-    font-size: $size;
-  }
-  
-  h1 {
-    @include headline(green, 12px);
-  }
+
+@include for-size($mobile) {
+    @include main($mobile)
+}
+
+@include for-size($desktop) {
+    @include main($desktop)
+}

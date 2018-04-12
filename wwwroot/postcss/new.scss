@@ -1,19 +1,28 @@
+.btn_play{
+    background: #fff;
+    button{
+        width: 100%;
+        height: 100%;
+        background-size:100% 100%;
+        border: 1px solid #ff0;
+        
+            &:hover:not([disabled]){
+                border:3px solid #999;
+                @media (any-hover: hover) {
+                    background: #f20;
+                }
+            }
+        
 
-    .image {
-        background-image: resolve('../images/bg.png');
-        border-radius:2px;
-        transform : scale(0.2);
-
-        .boda {
-            transform : scale(0.2);
+        &.on {
+            background: #0ff;
+            @media (any-hover: hover) {
+                &:hover:not([disabled]){
+                    background: #00f;
+                }
+            }
         }
     }
-
-    @media (min-resolution: 2dppx) {
-        .image {
-            background-image: resolve('../images/bg.png');
-        }
-    }
-
+}
 
 

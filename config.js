@@ -2,8 +2,8 @@ const wwwroot = "wwwroot";
 const srcRoot = "wwwroot/postcss";
 const tgtRoot = "wwwroot/css";
 
-const host = 'localhost';
-const port = '8080';
+const host = '192.168.100.4';
+const port = '9080';
 /*
 const browsers = [
     "Android 2.3",
