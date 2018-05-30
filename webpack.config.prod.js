@@ -7,7 +7,7 @@ var baseConfig = require('./webpack.config.base')
 
 var buildConfig = merge(baseConfig, {
   optimization: {
-    minimize: true,
+    minimize: false,
   },
 });
 

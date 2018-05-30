@@ -1,21 +1,15 @@
 const wwwroot = "wwwroot";
-const srcRoot = "wwwroot/postcss";
-const tgtRoot = "wwwroot/css";
-
-const host = '192.168.100.4';
+const host = '127.0.0.1';
 const port = '9080';
-/*
-const browsers = [
-    "Android 2.3",
-    "Android >= 4",
-    "Chrome >= 20",
-    "Firefox >= 24",
-    "Explorer >= 8",
-    "iOS >= 6",
-    "Opera >= 12",
-    "Safari >= 6"
+
+const bRelative = false;
+
+const assetPaths = [
+    'wwwroot/content/kdmtlib',
+    'wwwroot/content/kdmtlib/images',
+    'wwwroot/content/kdmtlib/font',
 ];
-*/
+
 
 const browsers = [
     "> 1%",
@@ -24,14 +18,12 @@ const browsers = [
     "Opera >= 12",
 ];
 
-
-
 module.exports = {
     wwwroot,
-    srcRoot,
-    tgtRoot,
     host,
     port,
+    bRelative,
+    assetPaths,
     browsers,
 };
 

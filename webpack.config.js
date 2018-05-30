@@ -5,29 +5,38 @@ const cfg = require('./config');
 const root = path.resolve(__dirname, '.');
 
 const wwwrootDir = path.resolve(__dirname, cfg.wwwroot);
-const srcRootDir = path.resolve(__dirname, cfg.srcRoot);
-const tgtRootDir = path.resolve(__dirname, cfg.tgtRoot);
+// const tgtRootDir = path.resolve(__dirname, cfg.tgtRoot);
 const fs = require('fs');
 const sources = [];
-const files = fs.readdirSync(srcRootDir);
-for (var i=0; i<files.length; i++) {
-    const item = files[i];
-    if(item.endsWith(".scss") && !item.startsWith('_')){
-        sources.push("./" + cfg.srcRoot + "/" + item);
-    }  
+
+
+function _readDir(dir, sources){
+    const files = fs.readdirSync(dir);
+    for (var i=0; i<files.length; i++) {
+        const item = files[i];
+        const absPath = path.resolve(dir,item);
+
+
+
+        // console.log(dir, __dirname, item, absPath, absPath.indexOf(__dirname) );
+
+        const stat = fs.lstatSync(absPath);
+        // console.log(item, stat.isDirectory(), stat.isFile());
+        if(stat.isDirectory()){
+            _readDir(absPath, sources);
+        }else if(stat.isFile() && item.endsWith(".scss") && !item.startsWith('_')){
+            sources.push(absPath);
+        }
+    }
 }
-const tempName = 'temp';
-const tempDir = path.resolve(__dirname, './' + tempName);
+_readDir(wwwrootDir, sources);
+console.log(sources);
 
 module.exports = merge(
     cfg,
     {
         root,
-        tempName,
-        tempDir,
         wwwrootDir,
-        srcRootDir,
-        tgtRootDir,
         sources,
     }
 );

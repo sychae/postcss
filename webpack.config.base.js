@@ -22,8 +22,7 @@ module.exports = {
                 {
                   loader: 'file-loader',
                   options: {
-                    name: '[name].css',
-                    outputPath: cfg.tgtRoot
+                    name: '[path][name].css',
                   }
                 },
                 {
@@ -34,7 +33,7 @@ module.exports = {
                   options: { 
                     importLoaders: 1,
                     url: false,
-                    minimize: process.env.NODE_ENV === 'production',
+                    minimize: false,
                   }
                 },
                 'postcss-loader'
@@ -77,7 +76,7 @@ module.exports = {
           ]
     },
     plugins: [
-      new ExtractTextPlugin(cfg.tgtRoot + '/[name].css'),
+      // new ExtractTextPlugin(cfg.tgtRoot + '/[name].css'),
 /*
         new ExtractTextPlugin({ 
               filename: cfg.tgtRoot + '/[name].css',
